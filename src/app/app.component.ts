@@ -1,13 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { NavComponent } from './Components/nav/nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterModule,
+    HomepageComponent,
+    NavComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styles: '',
 })
-export class AppComponent {
-  title = 'RecipeFinder';
-}
+export class AppComponent {}
