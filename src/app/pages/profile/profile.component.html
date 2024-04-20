@@ -1,0 +1,151 @@
+<main>
+  <div class="p-16 mx-8 bg-gray-100 border-amber-950 rounded-2xl">
+    <!-- Upper Information -->
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="font-bold text-xl">My Recipes</h3>
+      <button
+        (click)="showDialog()"
+        class="bg-slate-400 px-4 py-2 rounded-xl text-white"
+      >
+        Add New
+      </button>
+    </div>
+
+    <!-- Recipes Information -->
+    <section
+      id="dialog"
+      class="justify-center items-center fixed bg-black top-0 left-0 bg-opacity-50 w-screen h-screen hidden transition-opacity duration-500"
+    >
+      <div class="bg-white rounded-2xl shadow-md p-8 w-[70%] flex flex-col">
+        <header class="flex justify-between align-middle pb-8">
+          <h1 class="text-2xl font-medium text-gray-500">Add Recipes</h1>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-8 h-8"
+            (click)="hideDialog()"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </header>
+        <div>
+          <div class="flex flex-col mb-4">
+            <label
+              class="block text-gray-700 text-base font-normal mb-2"
+              for="title"
+              >Title</label
+            >
+            <input
+              class="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              [(ngModel)]="recipeObj.title"
+              id="title"
+              type="text"
+              placeholder="Pan Cake with Honey.."
+            />
+          </div>
+          <div class="flex flex-col mb-4">
+            <label
+              class="block text-gray-700 text-base font-normal mb-2"
+              for="title"
+              >Types</label
+            >
+            <input
+              class="appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              [(ngModel)]="recipeObj.types"
+              type="text"
+              id="types"
+              placeholder="Break Fast, lunch, Dinner"
+            />
+          </div>
+          <div class="flex flex-col mb-4">
+            <label
+              class="block text-gray-700 text-base font-normal mb-2"
+              for="Ingredients"
+              >Ingredients</label
+            >
+            <textarea
+              class="appearance-none border rounded-xl w-full py-2 px-3 h-28 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              [(ngModel)]="recipeObj.ingredients"
+              type="text"
+              id="ingredients"
+              placeholder="Ingredients"
+            ></textarea>
+          </div>
+          <div class="flex flex-col mb-4">
+            <label
+              class="block text-gray-700 text-base font-normal mb-2"
+              for="Instructions"
+              >Instructions</label
+            >
+            <textarea
+              class="appearance-none border rounded-xl w-full py-2 px-3 h-48 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              [(ngModel)]="recipeObj.instructions"
+              type="text"
+              id="instructions"
+              placeholder="Instructions"
+            ></textarea>
+          </div>
+          <div class="">
+            <button
+              class="bg-green-500 py-2 px-6 text-white rounded-xl hover:bg-green-800"
+              (click)="save()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recipes List -->
+    @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
+    <div
+      class="bg-white rounded-2xl shadow-md p-8 mb-6 flex flex-wrap max-w-lg"
+    >
+      <div>
+        <header class="pb-2 flex flex-col">
+          <h1 class="text-3xl font-bold py-3">{{ item.title }}</h1>
+          <p
+            class="outline bg-slate-600 text-white py-1 px-2 rounded-t-xl w-32 text-center"
+          >
+            {{ item.types }}
+          </p>
+        </header>
+        <p class="text-xl font-semibold py-2">Ingredients</p>
+        <p>
+          {{ item.ingredients }}
+        </p>
+        <p class="text-xl font-semibold py-2">Instructions</p>
+        <p>
+          {{ item.instructions }}
+        </p>
+        <div class="cta flex gap-2 mt-4">
+          <button
+            class="bg-green-400 py-2 px-4 rounded-xl text-white hover:bg-green-600"
+            (click)="onEdit(item)"
+          >
+            Edit
+          </button>
+          <button
+            class="bg-red-500 py-2 px-4 rounded-xl text-white hover:bg-red-700"
+            (click)="onDelete(item)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    } } @else {
+    <div class="flex align-middle justify-center h-36">
+      <p>You haven't save any recipes. Add New Recipe</p>
+    </div>
+    }
+  </div>
+</main>
