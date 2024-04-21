@@ -1,0 +1,15 @@
+<div class="px-14">
+  <ul class="mx-8 my-6">
+    <h1 class="font-thin text-3xl" style="font-family: patua One">Recipes</h1>
+    <div class="flex gap-4 py-4 text-xl">
+      <li *ngFor="let tab of tabsArray; let sr = index" (click)="setTab(sr)">
+        <a
+          class="cursor-pointer py-2 px-4 rounded-2xl hover:bg-gray-100"
+          [ngClass]="activatedTab == sr ? 'active' : ''"
+          >{{ tab }}</a
+        >
+      </li>
+    </div>
+    <hr />
+  </ul>
+</div>

@@ -9,12 +9,22 @@
       </p>
     </a>
   </div>
-  <div class="cta">
-    <button
-      routerLink="/profile"
-      class="bg-green-500 text-white rounded-3xl py-4 px-4 hover:bg-slate-950"
-    >
-      My Recipes
-    </button>
+  <div class="cta flex gap-4 align-middle">
+    <div class="relative mx-auto text-gray-600">
+      <input
+        class="border-2 border-gray-300 bg-white h-14 max-w-3xl px-5 pr-16 rounded-3xl text-sm focus:outline-none invisible md:visible"
+        type="search"
+        name="search"
+        placeholder="Search"
+      />
+    </div>
+    <div class="cta">
+      <button
+        routerLink="/profile"
+        class="bg-green-500 text-white rounded-3xl py-4 px-4 hover:bg-slate-950"
+      >
+        My Recipes
+      </button>
+    </div>
   </div>
 </nav>

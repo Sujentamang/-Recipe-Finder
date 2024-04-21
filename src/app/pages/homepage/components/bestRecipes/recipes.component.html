@@ -1,13 +1,119 @@
-<div class="mx-8 rounded-2xl my-8">
-  <h1 class="font-thin text-2xl" style="font-family: patua One">
-    Best Recipes
-  </h1>
-  <div class="py-4">
-    <ul class="flex flex-row gap-6 overflow-x-auto">
-      <li><a href="">Breakfast</a></li>
-      <li>Dinner</li>
-      <li>Snacks</li>
-      <li>Festive Dinner</li>
-    </ul>
+<div>
+  <div class="mt-8">
+    <app-recipelist
+      [tabsArray]="tabs"
+      (onTabChange)="tabChange($event)"
+    ></app-recipelist>
+  </div>
+
+  <div class="mx-8 my-4 px-14">
+    <div
+      *ngIf="activatedTabIndex == 0"
+      class="max-w-[1200px] gap-6 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+    >
+      @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
+      @if (this.tabs.indexOf(item.types) !== -1) {
+      <div class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl">
+        <div>
+          <header class="pb-2 flex flex-col">
+            <h1 class="text-xl font-bold py-3">{{ item.title }}</h1>
+            <p
+              class="bg-slate-600 text-white py-1 rounded-xl w-28 text-center text-sm"
+            >
+              {{ item.types }}
+            </p>
+          </header>
+          <p class="text-lg">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+      } } } @else {
+      <div class="text-left py-24">
+        <p class="text-xl lg:text-xl">Sorry we dont have Recipes.</p>
+      </div>
+      }
+    </div>
+    <div
+      *ngIf="activatedTabIndex == 1"
+      class="max-w-[1200px] gap-6 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+    >
+      @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
+      @if (this.tabs.indexOf(item.types) !== -1) {
+      <div class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl">
+        <div>
+          <header class="pb-2 flex flex-col">
+            <h1 class="text-xl font-bold py-3">{{ item.title }}</h1>
+            <p
+              class="bg-slate-600 text-white py-1 rounded-xl w-28 text-center text-sm"
+            >
+              {{ item.types }}
+            </p>
+          </header>
+          <p class="text-lg">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+      } } } @else {
+      <div class="text-left py-24">
+        <p class="text-xl lg:text-xl">Sorry we dont have Recipes.</p>
+      </div>
+      }
+    </div>
+    <div
+      *ngIf="activatedTabIndex == 2"
+      class="max-w-[1200px] gap-6 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+    >
+      @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
+      @if (this.tabs.indexOf(item.types) !== -1) {
+      <div class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl">
+        <div>
+          <header class="pb-2 flex flex-col">
+            <h1 class="text-xl font-bold py-3">{{ item.title }}</h1>
+            <p
+              class="bg-slate-600 text-white py-1 rounded-xl w-28 text-center text-sm"
+            >
+              {{ item.types }}
+            </p>
+          </header>
+          <p class="text-lg">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+      } } } @else {
+      <div class="text-left py-24">
+        <p class="text-xl lg:text-xl">Sorry we dont have Recipes.</p>
+      </div>
+      }
+    </div>
+    <div
+      *ngIf="activatedTabIndex == 3"
+      class="max-w-[1200px] gap-6 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+    >
+      @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
+      @if (this.tabs.indexOf(item.types) !== -1) {
+      <div class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl">
+        <div>
+          <header class="pb-2 flex flex-col">
+            <h1 class="text-xl font-bold py-3">{{ item.title }}</h1>
+            <p
+              class="bg-slate-600 text-white py-1 rounded-xl w-28 text-center text-sm"
+            >
+              {{ item.types }}
+            </p>
+          </header>
+          <p class="text-lg">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+      } } } @else {
+      <div class="text-left py-24">
+        <p class="text-xl lg:text-xl">Sorry we dont have Recipes.</p>
+      </div>
+      }
+    </div>
   </div>
 </div>
