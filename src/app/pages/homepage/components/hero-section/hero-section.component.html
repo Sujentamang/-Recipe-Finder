@@ -9,6 +9,8 @@
     </h1>
     <div class="pt-2 pb-1 relative mx-auto text-gray-600 text-center">
       <input
+        [(ngModel)]="searchText"
+        (click)="sendMessage()"
         class="border-2 border-gray-300 bg-white h-14 px-5 pr-16 rounded-3xl text-sm focus:outline-none md:hidden"
         type="search"
         name="search"

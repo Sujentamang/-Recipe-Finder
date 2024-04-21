@@ -1,11 +1,20 @@
-import { style } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './hero-section.component.html',
   styles: '',
 })
-export class HeroSectionComponent {}
+export class HeroSectionComponent implements OnInit {
+  searchText: any;
+  constructor() {}
+  @Output() event = new EventEmitter<any>();
+  sendMessage() {
+    this.event.emit(this.searchText);
+  }
+
+  ngOnInit(): void {}
+}

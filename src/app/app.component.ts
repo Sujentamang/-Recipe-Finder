@@ -1,20 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavComponent } from './Components/nav/nav.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BrowserModule } from '@angular/platform-browser';
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
+@NgModule({
   imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterModule,
+    BrowserModule,
+    Ng2SearchPipeModule,
+    Component,
     HomepageComponent,
     NavComponent,
+    RouterModule,
+    RouterOutlet,
+    CommonModule,
   ],
-  templateUrl: './app.component.html',
-  styles: '',
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
 export class AppComponent {}

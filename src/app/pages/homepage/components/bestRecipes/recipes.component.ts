@@ -1,22 +1,33 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RecipelistComponent } from '../recipelist/recipelist.component';
+import { HeroSectionComponent } from '../hero-section/hero-section.component';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [CommonModule, RouterModule, RecipelistComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    RecipelistComponent,
+    HeroSectionComponent,
+  ],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.scss',
 })
 export class RecipesComponent implements OnInit {
-  tabs: string[] = ['Break Fast', 'Dinner', 'Snacks', 'Festive Dinner'];
+  @Input() hello: string = '';
+
+  tabs: string[] = ['Break Fast', 'Dinner', 'lunch', 'Festive Dinner'];
   activatedTabIndex: number = 0;
 
   recipeObj: RecipesDetails = new RecipesDetails();
   recipeList: RecipesDetails[] = [];
-
+  searchText: any;
+  receiveMessage($event: any) {
+    this.searchText = $event;
+  }
   constructor() {
     const joinedString = this.recipeList.join(', ');
     console.log(joinedString);

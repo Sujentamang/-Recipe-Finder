@@ -1,4 +1,5 @@
 <div>
+  <app-hero-section (event)="receiveMessage($event)"></app-hero-section>
   <div class="mt-8">
     <app-recipelist
       [tabsArray]="tabs"
@@ -11,9 +12,11 @@
       *ngIf="activatedTabIndex == 0"
       class="max-w-[1200px] gap-6 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
     >
-      @if (recipeList.length != 0) { @for (item of recipeList; track $index) {
-      @if (this.tabs.indexOf(item.types) !== -1) {
-      <div class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl">
+      @if (recipeList.length != 0){
+      <div
+        *ngFor="let item of recipeList"
+        class="bg-gray-100 rounded-2xl shadow-md p-8 mb-4 max-w-3xl"
+      >
         <div>
           <header class="pb-2 flex flex-col">
             <h1 class="text-xl font-bold py-3">{{ item.title }}</h1>
@@ -28,7 +31,7 @@
           </p>
         </div>
       </div>
-      } } } @else {
+      } @else {
       <div class="text-left py-24">
         <p class="text-xl lg:text-xl">Sorry we dont have Recipes.</p>
       </div>
